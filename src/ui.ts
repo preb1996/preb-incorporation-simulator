@@ -1,4 +1,4 @@
-import { CalculationError, calculateComparison, type ComparisonInput2026 } from './index.ts';
+import { CalculationError, calculateComparison, optimize, type ComparisonInput2026, type OptimizationResult } from './index.ts';
 
 type Values = Record<string, string | undefined>;
 type PersonKey = string;
@@ -83,8 +83,13 @@ export function calculateFromForm(values: Values) {
   try { return { result: calculateComparison(parseFormValues(values)), error: null }; }
   catch (error) { return { result: null, error: error instanceof CalculationError || error instanceof Error ? error.message : '入力を確認してください' }; }
 }
+export function optimizeFromForm(values: Values) {
+  try { return { result: optimize(parseFormValues(values)), error: null }; }
+  catch (error) { return { result: null, error: error instanceof CalculationError || error instanceof Error ? error.message : '入力を確認してください' }; }
+}
 
 const yen = (value: number) => `${new Intl.NumberFormat('ja-JP').format(value)}円`;
+const optimizationCandidate = (candidate: OptimizationResult['best'], index: number) => `<li>${index + 1}. 夫 ${yen(candidate.husbandMonthlySalary)} / 妻 ${yen(candidate.wifeMonthlySalary)}、世帯可処分所得 ${yen(candidate.householdDisposableIncomeB)}、法人留保 ${yen(candidate.corporateAfterTaxProfit)}、総資産増加 ${yen(candidate.totalWealthIncreaseB)}、差額 ${yen(candidate.wealthDifference)}、${candidate.status}${candidate.reason ? `（${candidate.reason}）` : ''}</li>`;
 const field = (label: string, name: string, type = 'number', requiredField = true) => `<label>${label}<input name="${name}" type="${type}"${requiredField ? ' required' : ''}></label>`;
 const select = (label: string, name: string, options: string[]) => `<label>${label}<select name="${name}" required><option value="">選択してください</option>${options.map(value => `<option value="${value}">${value}</option>`).join('')}</select></label>`;
 const consumptionFields = (label: string, name: string, corporate = false) => {
@@ -115,7 +120,7 @@ function wireConsumption(root: Element) {
 }
 function render() {
   const root = document.querySelector('#app')!;
-  root.innerHTML = `<h1>法人化シミュレーター</h1><p>2026年・名古屋市/愛知県のPhase 1計算エンジンを使います。必須項目をすべて入力してください。</p><form id="form">${select('国民健康保険料の支払者', 'householdNhiPayer', ['HUSBAND', 'WIFE'])}<h2>CASE-A 個人事業</h2>${personFields('husbandA', '夫')}${personFields('wifeA', '妻')}<h2>CASE-B 法人化</h2>${select('社会保険加入開始月（夫婦共通）', 'caseB.socialInsuranceStartMonth', Array.from({ length: 12 }, (_, i) => String(i + 1)))}${personFields('husbandB', '夫の役員入力', true)}${personFields('wifeB', '妻の役員入力', true)}<fieldset><legend>法人入力</legend><div class="grid">${field('法人資本金', 'corporation.capital')}${field('設立日', 'corporation.establishmentDate', 'date')}${field('事業年度開始日', 'corporation.fiscalYearStart', 'date')}${field('事業年度終了日', 'corporation.fiscalYearEnd', 'date')}${field('売上', 'corporation.sales')}${field('営業経費', 'corporation.operatingExpenses')}${field('追加法人経費', 'corporation.additionalExpenses')}${field('税理士費用', 'corporation.accountantCost')}${field('維持費', 'corporation.maintenanceCost')}${field('その他固定費', 'corporation.otherFixedCost')}${field('事業月数', 'corporation.businessMonths')}${field('法人所在月数', 'corporation.presenceMonths')}${select('インボイス登録', 'corporation.invoiceRegistered', ['true', 'false'])}${select('課税事業者選択', 'corporation.taxableBusinessElection', ['true', 'false'])}${select('特定新設法人', 'corporation.specificNewCorporationFlag', ['true', 'false'])}${consumptionFields('法人消費税ステータス', 'corporation.consumptionTax', true)}</div></fieldset><button type="submit">計算する</button></form><section id="results" class="results" aria-live="polite"></section>`;
+  root.innerHTML = `<h1>法人化シミュレーター</h1><p>2026年・名古屋市/愛知県のPhase 1計算エンジンを使います。必須項目をすべて入力してください。</p><form id="form">${select('国民健康保険料の支払者', 'householdNhiPayer', ['HUSBAND', 'WIFE'])}<h2>CASE-A 個人事業</h2>${personFields('husbandA', '夫')}${personFields('wifeA', '妻')}<h2>CASE-B 法人化</h2>${select('社会保険加入開始月（夫婦共通）', 'caseB.socialInsuranceStartMonth', Array.from({ length: 12 }, (_, i) => String(i + 1)))}${personFields('husbandB', '夫の役員入力', true)}${personFields('wifeB', '妻の役員入力', true)}<fieldset><legend>法人入力</legend><div class="grid">${field('法人資本金', 'corporation.capital')}${field('設立日', 'corporation.establishmentDate', 'date')}${field('事業年度開始日', 'corporation.fiscalYearStart', 'date')}${field('事業年度終了日', 'corporation.fiscalYearEnd', 'date')}${field('売上', 'corporation.sales')}${field('営業経費', 'corporation.operatingExpenses')}${field('追加法人経費', 'corporation.additionalExpenses')}${field('税理士費用', 'corporation.accountantCost')}${field('維持費', 'corporation.maintenanceCost')}${field('その他固定費', 'corporation.otherFixedCost')}${field('事業月数', 'corporation.businessMonths')}${field('法人所在月数', 'corporation.presenceMonths')}${select('インボイス登録', 'corporation.invoiceRegistered', ['true', 'false'])}${select('課税事業者選択', 'corporation.taxableBusinessElection', ['true', 'false'])}${select('特定新設法人', 'corporation.specificNewCorporationFlag', ['true', 'false'])}${consumptionFields('法人消費税ステータス', 'corporation.consumptionTax', true)}</div></fieldset><button type="submit">計算する</button><button type="button" id="optimize-button">役員報酬を最適化</button></form><section id="results" class="results" aria-live="polite"></section>`;
   wireConsumption(root);
   root.querySelector<HTMLFormElement>('#form')!.addEventListener('submit', event => {
     event.preventDefault();
@@ -126,6 +131,16 @@ function render() {
     const result = outcome.result!;
     const difference = result.comparison.wealthDifference;
     results.innerHTML = `<h2>計算結果</h2><div class="result-grid"><div class="result-card"><h3>CASE-A</h3><p>世帯可処分所得</p><div class="amount">${yen(result.comparison.householdDisposableIncomeA)}</div></div><div class="result-card"><h3>CASE-B</h3><p>世帯可処分所得</p><div class="amount">${yen(result.comparison.householdDisposableIncomeB)}</div><p>法人留保</p><div class="amount">${yen(result.comparison.corporateAfterTaxProfit)}</div><p>世帯 + 法人の総資産増加</p><div class="amount">${yen(result.comparison.totalWealthIncreaseB)}</div></div><div class="result-card"><h3>比較</h3><p>CASE-B − CASE-A</p><div class="amount ${difference >= 0 ? 'advantage' : 'disadvantage'}">${yen(difference)}</div><p class="${difference >= 0 ? 'advantage' : 'disadvantage'}">${difference >= 0 ? '法人化が有利' : '法人化が不利'}</p></div></div>`;
+  });
+  root.querySelector<HTMLButtonElement>('#optimize-button')!.addEventListener('click', () => {
+    const form = root.querySelector<HTMLFormElement>('#form')!;
+    const values: Values = Object.fromEntries(new FormData(form).entries()) as Values;
+    const outcome = optimizeFromForm(values);
+    const results = root.querySelector<HTMLElement>('#results')!;
+    if (outcome.error) { results.innerHTML = `<p class="error" role="alert">${outcome.error}</p>`; return; }
+    const optimization = outcome.result!;
+    const best = optimization.best;
+    results.innerHTML = `<h2>役員報酬最適化結果</h2><div class="result-grid"><div class="result-card"><h3>推奨報酬</h3><p>夫 月額役員報酬</p><div class="amount">${yen(best.husbandMonthlySalary)}</div><p>妻 月額役員報酬</p><div class="amount">${yen(best.wifeMonthlySalary)}</div><p>ステータス</p><div>${best.status}${best.reason ? `（${best.reason}）` : ''}</div></div><div class="result-card"><h3>推奨結果</h3><p>世帯可処分所得</p><div class="amount">${yen(best.householdDisposableIncomeB)}</div><p>法人留保</p><div class="amount">${yen(best.corporateAfterTaxProfit)}</div><p>世帯＋法人総資産増加</p><div class="amount">${yen(best.totalWealthIncreaseB)}</div><p>CASE-Aとの差額</p><div class="amount">${yen(best.wealthDifference)}</div></div></div><h3>上位5候補（評価 ${optimization.evaluatedCount}件）</h3><ol>${optimization.topCandidates.map(optimizationCandidate).join('')}</ol>`;
   });
 }
 if (typeof document !== 'undefined') render();

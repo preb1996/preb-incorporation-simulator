@@ -17,12 +17,11 @@ test('optimizerはcalculateComparisonを候補ごとに再利用し候補結果�
   const input = structuredClone(golden01.input);
   input.caseB.socialInsuranceMonths = [];
   const optimized = e.optimize(input);
-  assert.equal(optimized.candidates.length, optimized.candidateSalaries.length ** 2);
-  assert.ok(optimized.candidates.length > 2601);
-  for (const candidate of optimized.candidates.slice(0, 5))
-    assert.deepEqual(candidate.status, e.candidateStatus(candidate.result.corporation.corporateAfterTaxProfit));
-  assert.equal(optimized.best, optimized.candidates[0]);
-  for (let i = 1; i < optimized.candidates.length; i++) {
-    assert.ok(optimized.candidates[i - 1].result.comparison.totalWealthIncreaseB >= optimized.candidates[i].result.comparison.totalWealthIncreaseB);
-  }
+  assert.equal(optimized.evaluatedCount, optimized.validCount + optimized.warningCount);
+  assert.equal(optimized.topCandidates.length, Math.min(5, optimized.evaluatedCount));
+  assert.ok(optimized.evaluatedCount > 2601);
+  assert.ok(optimized.topCandidates.every(candidate => ['VALID', 'WARNING'].includes(candidate.status)));
+  assert.ok(optimized.best.status === 'VALID' || optimized.validCount === 0);
+  for (let i = 1; i < optimized.topCandidates.length; i++)
+    assert.ok(optimized.topCandidates[i - 1].totalWealthIncreaseB >= optimized.topCandidates[i].totalWealthIncreaseB);
 });

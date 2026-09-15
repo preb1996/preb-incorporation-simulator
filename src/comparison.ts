@@ -127,13 +127,19 @@ export function calculateComparison(input:ComparisonInput2026) {
 export interface OptimizationCandidate {
  husbandMonthlySalary:number;
  wifeMonthlySalary:number;
- result:ReturnType<typeof calculateComparison>;
- status:ReturnType<typeof candidateStatus>;
+ householdDisposableIncomeB:number;
+ corporateAfterTaxProfit:number;
+ totalWealthIncreaseB:number;
+ wealthDifference:number;
+ status:'VALID'|'WARNING';
+ reason:'NEGATIVE_CORPORATE_RETENTION'|null;
 }
 export interface OptimizationResult {
- candidates:readonly OptimizationCandidate[];
  best:OptimizationCandidate;
- candidateSalaries:readonly number[];
+ topCandidates:readonly OptimizationCandidate[];
+ evaluatedCount:number;
+ validCount:number;
+ warningCount:number;
 }
 function candidateInput(input:ComparisonInput2026,husbandMonthlySalary:number,wifeMonthlySalary:number):ComparisonInput2026 {
  const activeMonths=new Set(input.caseB.socialInsuranceMonths);
@@ -148,11 +154,11 @@ function candidateInput(input:ComparisonInput2026,husbandMonthlySalary:number,wi
  };
 }
 function compareCandidates(left:OptimizationCandidate,right:OptimizationCandidate):number {
- const wealth=right.result.comparison.totalWealthIncreaseB-left.result.comparison.totalWealthIncreaseB;
+ const wealth=right.totalWealthIncreaseB-left.totalWealthIncreaseB;
  if(wealth!==0)return wealth;
- const profit=right.result.corporation.corporateAfterTaxProfit-left.result.corporation.corporateAfterTaxProfit;
+ const profit=right.corporateAfterTaxProfit-left.corporateAfterTaxProfit;
  if(profit!==0)return profit;
- const household=right.result.caseB.householdDisposableIncome-left.result.caseB.householdDisposableIncome;
+ const household=right.householdDisposableIncomeB-left.householdDisposableIncomeB;
  if(household!==0)return household;
  const salaryTotal=(left.husbandMonthlySalary+left.wifeMonthlySalary)-(right.husbandMonthlySalary+right.wifeMonthlySalary);
  if(salaryTotal!==0)return salaryTotal;
@@ -164,9 +170,33 @@ export function optimize(input:ComparisonInput2026):OptimizationResult {
  const salaries=salaryCandidatesWithExplicitBoundaries(socialInsuranceSalaryBoundaries());
  const candidates:OptimizationCandidate[]=[];
  for(const husbandMonthlySalary of salaries)for(const wifeMonthlySalary of salaries){
-  const result=calculateComparison(candidateInput(input,husbandMonthlySalary,wifeMonthlySalary));
-  candidates.push({husbandMonthlySalary,wifeMonthlySalary,result,status:candidateStatus(result.corporation.corporateAfterTaxProfit)});
+  let result:ReturnType<typeof calculateComparison>;
+  try {
+   result=calculateComparison(candidateInput(input,husbandMonthlySalary,wifeMonthlySalary));
+  } catch (error) {
+   if(error instanceof CalculationError&&error.code==='SPEC_BLOCKER')continue;
+   throw error;
+  }
+  const status=candidateStatus(result.corporation.corporateAfterTaxProfit);
+  candidates.push({
+   husbandMonthlySalary,wifeMonthlySalary,
+   householdDisposableIncomeB:result.caseB.householdDisposableIncome,
+   corporateAfterTaxProfit:result.corporation.corporateAfterTaxProfit,
+   totalWealthIncreaseB:result.comparison.totalWealthIncreaseB,
+   wealthDifference:result.comparison.wealthDifference,
+   status:status.status,reason:status.reason
+  });
  }
  candidates.sort(compareCandidates);
- return {candidates,best:candidates[0]!,candidateSalaries:salaries};
+ const valid=candidates.filter(candidate=>candidate.status==='VALID');
+ const warning=candidates.filter(candidate=>candidate.status==='WARNING');
+ const rankedTop=valid.length>0?valid.slice(0,5):warning.slice(0,5);
+ if(valid.length>0&&rankedTop.length<5)rankedTop.push(...warning.slice(0,5-rankedTop.length));
+ return {
+  best:(valid[0]??warning[0])!,
+  topCandidates:rankedTop,
+  evaluatedCount:candidates.length,
+  validCount:valid.length,
+  warningCount:warning.length
+ };
 }

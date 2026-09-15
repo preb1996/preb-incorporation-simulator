@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fixture from './golden-01-fixture.json' with { type: 'json' };
-import { calculateFromForm, parseFormValues } from '../src/ui.ts';
+import { calculateFromForm, optimizeFromForm, parseFormValues } from '../src/ui.ts';
 
 function flatten(value, prefix, output = {}) {
   if (Array.isArray(value)) value.forEach((item, index) => flatten(item, `${prefix}.${index + 1}`, output));
@@ -77,4 +77,13 @@ test('UI adapter rejects corporation-only unsupported consumption-tax modes', ()
   values['corporation.consumptionTax.output'] = '100000';
   values['corporation.consumptionTax.eligible'] = 'true';
   assert.throws(() => parseFormValues(values), /消費税ステータスが不正/);
+});
+
+test('UI adapter exposes executive salary optimization summary', () => {
+  const outcome = optimizeFromForm(formValues(fixture.input));
+  assert.equal(outcome.error, null);
+  assert.equal(outcome.result.topCandidates.length, 5);
+  assert.ok(outcome.result.evaluatedCount > 2601);
+  assert.ok(outcome.result.best.status === 'VALID' || outcome.result.validCount === 0);
+  assert.equal(Object.hasOwn(outcome.result.best, 'result'), false);
 });
