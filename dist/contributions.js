@@ -87,6 +87,13 @@ export function remunerationGrade(salary, system) {
 export function standardMonthlyRemuneration(salary, system) {
     return remunerationGrade(salary, system).standardMonthlyRemuneration;
 }
+/** Returns every remuneration-grade lower boundary represented in the master. */
+export function socialInsuranceSalaryBoundaries() {
+    return [...new Set([
+            ...socialMaster.healthInsuranceGrades,
+            ...socialMaster.employeesPensionGrades
+        ].map(grade => grade.remunerationLowerInclusive).filter((boundary) => boundary !== null))].sort((a, b) => a - b);
+}
 /** Hundredths of one yen. Payroll withholding: <= 50 sen is discarded, > 50 sen rounds up. */
 export function roundEmployeePayrollHundredths(hundredthsYen) {
     integer(hundredthsYen, 'hundredthsYen');

@@ -1,7 +1,7 @@
 import { master } from './master.ts';
 import { block, integer, yen, sum, subtract, exactInteger, CalculationError } from './core.ts';
 import {businessIncome,incomeTaxBasicDeduction,baseIncomeTax,reconstructionTax,salaryIncomeRaw,residentBasicDeduction2026,residentTax2026} from './personal.ts';
-import {householdNhi2026,householdNhiDeductionAllocation,nationalPension,calculateMonthlySocialInsurance,type HouseholdNhiPayer} from './contributions.ts';
+import {householdNhi2026,householdNhiDeductionAllocation,nationalPension,calculateMonthlySocialInsurance,socialInsuranceSalaryBoundaries,type HouseholdNhiPayer} from './contributions.ts';
 import {individualBusinessTax2026,consumptionTax2026,corporationTax2026,corporateLocalTax2026,corporateEnterpriseTax2026,type ConsumptionInput} from './corporate.ts';
 import {truncateIncomeTaxTaxableBase} from './rounding.ts';
 /** Aggregation of finalized externally supplied components, NOT a complete tax simulation. */
@@ -124,4 +124,49 @@ export function calculateComparison(input:ComparisonInput2026) {
  const corporateAfterTaxProfit=corporateIncomeBeforeTax-corporationTax.tax-local.total-enterprise.baseCorporateEnterpriseTax-enterprise.specialCorporateEnterpriseTax-consumption.payable+consumption.refund;
  return {assessmentYear:2026,caseA,caseB:{husband:bH,wife:bW,socialInsurance:social,householdDisposableIncome:householdDisposableIncomeB},corporation:{corporateIncomeBeforeTax,corporationTax,corporateLocalTax:local,corporateEnterpriseTax:enterprise,consumptionTax:consumption,corporateAfterTaxProfit},comparison:compareFinalizedAmounts(caseA.householdDisposableIncome,bH.disposableIncome,bW.disposableIncome,corporateAfterTaxProfit)};
 }
-export function optimize(_input:unknown):never {throw new CalculationError('OUT_OF_MVP_RANGE','Phase 1はGolden計算エンジンまで。役員報酬推薦は対象外');}
+export interface OptimizationCandidate {
+ husbandMonthlySalary:number;
+ wifeMonthlySalary:number;
+ result:ReturnType<typeof calculateComparison>;
+ status:ReturnType<typeof candidateStatus>;
+}
+export interface OptimizationResult {
+ candidates:readonly OptimizationCandidate[];
+ best:OptimizationCandidate;
+ candidateSalaries:readonly number[];
+}
+function candidateInput(input:ComparisonInput2026,husbandMonthlySalary:number,wifeMonthlySalary:number):ComparisonInput2026 {
+ const activeMonths=new Set(input.caseB.socialInsuranceMonths);
+ const replace=(original:readonly number[],salary:number)=>original.map((value,index)=>activeMonths.has(index+1)?salary:value);
+ return {
+  ...input,
+  caseB:{
+   ...input.caseB,
+   husband:{...input.caseB.husband,monthlyExecutiveSalary:replace(input.caseB.husband.monthlyExecutiveSalary,husbandMonthlySalary)},
+   wife:{...input.caseB.wife,monthlyExecutiveSalary:replace(input.caseB.wife.monthlyExecutiveSalary,wifeMonthlySalary)}
+  }
+ };
+}
+function compareCandidates(left:OptimizationCandidate,right:OptimizationCandidate):number {
+ const wealth=right.result.comparison.totalWealthIncreaseB-left.result.comparison.totalWealthIncreaseB;
+ if(wealth!==0)return wealth;
+ const profit=right.result.corporation.corporateAfterTaxProfit-left.result.corporation.corporateAfterTaxProfit;
+ if(profit!==0)return profit;
+ const household=right.result.caseB.householdDisposableIncome-left.result.caseB.householdDisposableIncome;
+ if(household!==0)return household;
+ const salaryTotal=(left.husbandMonthlySalary+left.wifeMonthlySalary)-(right.husbandMonthlySalary+right.wifeMonthlySalary);
+ if(salaryTotal!==0)return salaryTotal;
+ if(left.husbandMonthlySalary!==right.husbandMonthlySalary)return left.husbandMonthlySalary-right.husbandMonthlySalary;
+ return left.wifeMonthlySalary-right.wifeMonthlySalary;
+}
+export function optimize(input:ComparisonInput2026):OptimizationResult {
+ if(!input||typeof input!=='object'||!input.caseB)throw new CalculationError('OUT_OF_MVP_RANGE','役員報酬最適化の入力が未定義');
+ const salaries=salaryCandidatesWithExplicitBoundaries(socialInsuranceSalaryBoundaries());
+ const candidates:OptimizationCandidate[]=[];
+ for(const husbandMonthlySalary of salaries)for(const wifeMonthlySalary of salaries){
+  const result=calculateComparison(candidateInput(input,husbandMonthlySalary,wifeMonthlySalary));
+  candidates.push({husbandMonthlySalary,wifeMonthlySalary,result,status:candidateStatus(result.corporation.corporateAfterTaxProfit)});
+ }
+ candidates.sort(compareCandidates);
+ return {candidates,best:candidates[0]!,candidateSalaries:salaries};
+}

@@ -27,7 +27,7 @@ npm run verify
 国保の社会保険料控除は`householdNhiPayer`が必須です。夫・妻への按分や自動帰属は行いません。
 `calculateComparison`は2026年の完全入力だけを受け付けます。未定義条件は推測せず停止します。
 
-役員報酬の推薦探索`optimize()`は今回のPhase 1対象外であり、`OUT_OF_MVP_RANGE`でfail closedします。
+役員報酬の推薦探索`optimize()`は、既存の`calculateComparison()`を候補ごとに再利用します。候補はoptimizerマスタの基本グリッドと、社会保険等級マスタの境界前後を統合し、候補月だけを置換して決定的に順位付けします。
 
 ## 根拠
 
