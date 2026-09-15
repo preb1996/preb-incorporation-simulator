@@ -7,7 +7,7 @@
     "node": ">=22.18.0"
   },
   "scripts": {
-    "build": "esbuild src/ui.ts --bundle --format=esm --outfile=dist/app.js",
+    "build": "tsc -p tsconfig.build.json",
     "typecheck": "tsc --noEmit",
     "test": "node --test tests/*.test.mjs",
     "test:golden": "node --test tests/golden.test.mjs",
@@ -15,7 +15,6 @@
     "test:social": "node --test tests/social-insurance.test.mjs"
   },
   "devDependencies": {
-    "esbuild": "0.25.9",
     "typescript": "5.9.3"
   }
 }
