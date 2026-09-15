@@ -1,0 +1,125 @@
+[
+  {
+    "id": "GOLDEN-02",
+    "operation": "loss",
+    "input": {
+      "income": -1000000,
+      "capital": 1000000,
+      "months": 12
+    },
+    "expected": {
+      "corporationTax": 0,
+      "prefecturalPerCapita": 21000,
+      "municipalPerCapita": 50000
+    },
+    "verificationNote": "第27〜29条。負の課税所得に法人税0、12か月均等割21000/50000を独立転記。統合比較の赤字計算成功までは検証しない。",
+    "source": "spec/v1.0_FINAL.md §45",
+    "verifiedAt": "2026-09-14"
+  },
+  {
+    "id": "GOLDEN-03",
+    "operation": "short",
+    "input": {
+      "income": 2000000,
+      "months": 5
+    },
+    "expected": {
+      "threshold1": [
+        "5000000",
+        "3"
+      ],
+      "threshold2": [
+        "10000000",
+        "3"
+      ],
+      "baseCorporateEnterpriseTax": 76000,
+      "specialCorporateEnterpriseTax": 28120
+    },
+    "verificationNote": "独立分数計算: 400万円×5/12=5000000/3、800万円×5/12=10000000/3。第一帯175000/3と第二帯53000/3の合計76000。端数処理前。",
+    "source": "spec/v1.0_FINAL.md §45",
+    "verifiedAt": "2026-09-14"
+  },
+  {
+    "id": "GOLDEN-04-LOW",
+    "operation": "adjustment",
+    "input": {
+      "taxable": 20000,
+      "difference": 50000,
+      "totalIncome": 1000000
+    },
+    "expected": {
+      "base": 20000,
+      "municipal": 800,
+      "prefectural": 200
+    },
+    "verificationNote": "第11条を手計算。min(50000,20000)=20000。",
+    "source": "spec/v1.0_FINAL.md §45",
+    "verifiedAt": "2026-09-14"
+  },
+  {
+    "id": "GOLDEN-04-HIGH-OFFICIAL",
+    "operation": "adjustment",
+    "input": {
+      "taxable": 2500000,
+      "difference": 50000,
+      "totalIncome": 3000000
+    },
+    "expected": {
+      "base": 50000,
+      "municipal": 2000,
+      "prefectural": 500
+    },
+    "source": "https://www.city.nagoya.jp/kurashi/zeikin/1037356/1011880/1011883/1011893.html",
+    "verificationNote": "名古屋市公式・2026年4月1日更新の式に入力して独立手計算。差額-450000→最低基礎50000、市4%で2000、県1%で500。公式試算ツールの出力取得ではなく公式掲載式との照合。",
+    "verifiedAt": "2026-09-14"
+  },
+  {
+    "id": "GOLDEN-05",
+    "operation": "ideco",
+    "input": {
+      "requested": 80000
+    },
+    "expected": {
+      "novFirst": 68000,
+      "decFirst": 75000,
+      "novSecond": 23000,
+      "decSecond": 62000,
+      "annualFirst": 823000,
+      "annualSecond": 315000
+    },
+    "verificationNote": "第24条。68000×11+75000=823000、23000×11+62000=315000。月上限を独立転記。",
+    "source": "spec/v1.0_FINAL.md §45",
+    "verifiedAt": "2026-09-14"
+  },
+  {
+    "id": "GOLDEN-07",
+    "operation": "business",
+    "input": {
+      "sales": 8000000,
+      "expenses": 2000000,
+      "blue": 650000
+    },
+    "expected": {
+      "businessIncomeBeforeBlueDeduction": 6000000,
+      "businessIncomeAfterBlueDeduction": 5350000
+    },
+    "verificationNote": "原本第45条の明示期待値を変更せず転記。",
+    "source": "spec/v1.0_FINAL.md §45",
+    "verifiedAt": "2026-09-14"
+  },
+  {
+    "id": "GOLDEN-08",
+    "operation": "reconstruction",
+    "input": {
+      "base": 176500
+    },
+    "expected": {
+      "reconstruction": 3706,
+      "incomeTaxAndReconstructionTax": 180206,
+      "simpleFinalTaxAfter100YenRounding": 180200
+    },
+    "verificationNote": "原本第45条の明示期待値を変更せず転記。源泉税・予定納税なし。",
+    "source": "spec/v1.0_FINAL.md §45",
+    "verifiedAt": "2026-09-14"
+  }
+]

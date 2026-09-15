@@ -1,0 +1,421 @@
+{
+  "incomeTax": {
+    "metadata": {
+      "sourceAuthority": "ユーザー承認済みSSOT",
+      "sourceTitle": "法人化シミュレーター 計算仕様書 v1.0 FINAL",
+      "sourceUrl": "../spec/v1.0_FINAL.md",
+      "effectiveFrom": "2026-01-01",
+      "effectiveTo": "2026-12-31",
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "SSOTからの転記確認。公式税制の包括検証ではない。"
+    },
+    "values": {
+      "basic": [
+        [
+          1320000,
+          1040000
+        ],
+        [
+          3360000,
+          620000
+        ],
+        [
+          4890000,
+          680000
+        ],
+        [
+          6550000,
+          670000
+        ],
+        [
+          23500000,
+          620000
+        ],
+        [
+          24000000,
+          480000
+        ],
+        [
+          24500000,
+          320000
+        ],
+        [
+          25000000,
+          160000
+        ]
+      ],
+      "brackets": [
+        [
+          1950000,
+          500,
+          0
+        ],
+        [
+          3300000,
+          1000,
+          97500
+        ],
+        [
+          6950000,
+          2000,
+          427500
+        ],
+        [
+          9000000,
+          2300,
+          636000
+        ],
+        [
+          18000000,
+          3300,
+          1536000
+        ],
+        [
+          40000000,
+          4000,
+          2796000
+        ]
+      ],
+      "top": [
+        4500,
+        4796000
+      ],
+      "reconstructionBps": 210,
+      "finalUnit": 100,
+      "taxableUnit": 1000
+    }
+  },
+  "salary": {
+    "metadata": {
+      "sourceAuthority": "ユーザー承認済みSSOT",
+      "sourceTitle": "法人化シミュレーター 計算仕様書 v1.0 FINAL",
+      "sourceUrl": "../spec/v1.0_FINAL.md",
+      "effectiveFrom": "2026-01-01",
+      "effectiveTo": "2026-12-31",
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "SSOTからの転記確認。公式税制の包括検証ではない。"
+    },
+    "values": {
+      "brackets": [
+        [
+          2200000,
+          0,
+          740000
+        ],
+        [
+          3600000,
+          3000,
+          80000
+        ],
+        [
+          6600000,
+          2000,
+          440000
+        ],
+        [
+          8500000,
+          1000,
+          1100000
+        ]
+      ],
+      "maximum": 1950000
+    }
+  },
+  "adjustment": {
+    "metadata": {
+      "sourceAuthority": "名古屋市",
+      "sourceTitle": "調整控除／市民税・県民税の計算例（令和8年度）",
+      "sourceUrl": "https://www.city.nagoya.jp/kurashi/zeikin/1037356/1011880/1011883/1011893.html",
+      "effectiveFrom": "2026-01-01",
+      "effectiveTo": "2026-12-31",
+      "verifiedAt": "2026-09-15",
+      "verificationScope": "200万円以下公式例と250万円独立計算を照合。v1.0式は変更なし。"
+    },
+    "values": {
+      "threshold": 2000000,
+      "minimumBase": 50000,
+      "basicDifference": 50000,
+      "incomeLimit": 25000000,
+      "municipalBps": 400,
+      "prefecturalBps": 100
+    }
+  },
+  "residentTax": {
+    "metadata": {
+      "sourceAuthority": "名古屋市",
+      "sourceTitle": "市民税・県民税の計算例（令和8年度）",
+      "sourceUrl": "https://www.city.nagoya.jp/kurashi/zeikin/1037356/1011880/1011883/1011891.html",
+      "effectiveFrom": "2026-01-01",
+      "effectiveTo": "2026-12-31",
+      "verifiedAt": "2026-09-15",
+      "verificationScope": "税率、均等割、森林環境税、課税所得1,000円処理、市民税・県民税各100円処理を照合。"
+    },
+    "values": {
+      "municipalBps": 770,
+      "prefecturalBps": 200,
+      "municipalFixed": 2800,
+      "prefecturalFixed": 1500,
+      "forest": 1000
+    }
+  },
+  "nhi": {
+    "metadata": {
+      "sourceAuthority": "名古屋市",
+      "sourceTitle": "令和8年度分の国民健康保険料・名古屋市国民健康保険料の試算",
+      "sourceUrl": "https://758kenshin.city.nagoya.jp/",
+      "effectiveFrom": "2026-04-01",
+      "effectiveTo": "2027-03-31",
+      "verifiedAt": "2026-09-15",
+      "verificationScope": "4区分の料率・定額・上限と、各区分10円未満切捨てを照合。"
+    },
+    "values": {
+      "basic": [
+        [
+          24000000,
+          430000
+        ],
+        [
+          24500000,
+          290000
+        ],
+        [
+          25000000,
+          150000
+        ]
+      ],
+      "medical": {
+        "fixed": 50591,
+        "bps": 883,
+        "cap": 670000
+      },
+      "support": {
+        "fixed": 15784,
+        "bps": 258,
+        "cap": 260000
+      },
+      "care": {
+        "fixed": 16120,
+        "bps": 234,
+        "cap": 170000
+      },
+      "children": {
+        "fixed": 1771,
+        "bps": 26,
+        "adultExtra": 92,
+        "adultAge": 18,
+        "cap": 30000
+      },
+      "careMinAge": 40,
+      "careMaxAgeExclusive": 65
+    }
+  },
+  "nationalPension": {
+    "metadata": {
+      "sourceAuthority": "ユーザー承認済みSSOT",
+      "sourceTitle": "法人化シミュレーター 計算仕様書 v1.0 FINAL",
+      "sourceUrl": "../spec/v1.0_FINAL.md",
+      "effectiveFrom": "2026-04-01",
+      "effectiveTo": "2027-03-31",
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "SSOTからの転記確認。公式税制の包括検証ではない。 年度表記の索引。月別適用の不足は統合計算でブロック。"
+    },
+    "values": {
+      "monthly": 17920
+    }
+  },
+  "individualBusinessTax": {
+    "metadata": {
+      "sourceAuthority": "ユーザー承認済みSSOT",
+      "sourceTitle": "法人化シミュレーター 計算仕様書 v1.0 FINAL",
+      "sourceUrl": "../spec/v1.0_FINAL.md",
+      "effectiveFrom": "2026-01-01",
+      "effectiveTo": "2026-12-31",
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "SSOTからの転記確認。公式税制の包括検証ではない。"
+    },
+    "values": {
+      "deduction": 2900000,
+      "allowedBps": [
+        0,
+        300,
+        400,
+        500
+      ]
+    }
+  },
+  "corporationTax": {
+    "metadata": {
+      "sourceAuthority": "ユーザー承認済みSSOT",
+      "sourceTitle": "法人化シミュレーター 計算仕様書 v1.0 FINAL",
+      "sourceUrl": "../spec/v1.0_FINAL.md",
+      "effectiveFrom": "2026-01-01",
+      "effectiveTo": "2026-12-31",
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "SSOTからの転記確認。公式税制の包括検証ではない。"
+    },
+    "values": {
+      "threshold": 8000000,
+      "lowerBps": 1500,
+      "upperBps": 2320
+    }
+  },
+  "corporateLocal": {
+    "metadata": {
+      "sourceAuthority": "ユーザー承認済みSSOT",
+      "sourceTitle": "法人化シミュレーター 計算仕様書 v1.0 FINAL",
+      "sourceUrl": "../spec/v1.0_FINAL.md",
+      "effectiveFrom": "2026-01-01",
+      "effectiveTo": "2026-12-31",
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "SSOTからの転記確認。公式税制の包括検証ではない。"
+    },
+    "values": {
+      "prefecturalBps": 100,
+      "municipalBps": 600,
+      "prefecturalFixed": 21000,
+      "municipalFixed": 50000,
+      "prefecturalTaxLimit": 15000000,
+      "municipalTaxLimit": 25000000,
+      "capitalLimit": 100000000
+    }
+  },
+  "enterprise": {
+    "metadata": {
+      "sourceAuthority": "ユーザー承認済みSSOT",
+      "sourceTitle": "法人化シミュレーター 計算仕様書 v1.0 FINAL",
+      "sourceUrl": "../spec/v1.0_FINAL.md",
+      "effectiveFrom": "2026-01-01",
+      "effectiveTo": "2026-12-31",
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "SSOTからの転記確認。公式税制の包括検証ではない。"
+    },
+    "values": {
+      "first": 4000000,
+      "second": 8000000,
+      "firstBps": 350,
+      "secondBps": 530,
+      "thirdBps": 700,
+      "incomeLimit": 50000000,
+      "specialBps": 3700
+    }
+  },
+  "consumption": {
+    "metadata": {
+      "sourceAuthority": "ユーザー承認済みSSOT",
+      "sourceTitle": "法人化シミュレーター 計算仕様書 v1.0 FINAL",
+      "sourceUrl": "../spec/v1.0_FINAL.md",
+      "effectiveFrom": "2026-01-01",
+      "effectiveTo": "2026-12-31",
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "SSOTからの転記確認。公式税制の包括検証ではない。"
+    },
+    "values": {
+      "specialBps": 2000,
+      "exemptCapitalExclusive": 10000000
+    }
+  },
+  "optimizer": {
+    "metadata": {
+      "sourceAuthority": "ユーザー承認済みSSOT",
+      "sourceTitle": "法人化シミュレーター 計算仕様書 v1.0 FINAL",
+      "sourceUrl": "../spec/v1.0_FINAL.md",
+      "effectiveFrom": "2026-01-01",
+      "effectiveTo": "2026-12-31",
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "SSOTからの転記確認。公式税制の包括検証ではない。"
+    },
+    "values": {
+      "minimumSalary": 100000,
+      "maximumSalary": 600000,
+      "step": 10000
+    }
+  },
+  "idecoBefore": {
+    "metadata": {
+      "sourceAuthority": "ユーザー承認済みSSOT",
+      "sourceTitle": "法人化シミュレーター 計算仕様書 v1.0 FINAL",
+      "sourceUrl": "../spec/v1.0_FINAL.md",
+      "effectiveFrom": "2026-01-01",
+      "effectiveTo": "2026-11-30",
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "SSOTからの転記確認。公式税制の包括検証ではない。"
+    },
+    "values": {
+      "first": 68000,
+      "second": 23000
+    }
+  },
+  "idecoAfter": {
+    "metadata": {
+      "sourceAuthority": "ユーザー承認済みSSOT",
+      "sourceTitle": "法人化シミュレーター 計算仕様書 v1.0 FINAL",
+      "sourceUrl": "../spec/v1.0_FINAL.md",
+      "effectiveFrom": "2026-12-01",
+      "effectiveTo": "2026-12-31",
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "SSOTからの転記確認。公式税制の包括検証ではない。"
+    },
+    "values": {
+      "first": 75000,
+      "second": 62000
+    }
+  },
+  "healthInsurance": {
+    "metadata": {
+      "sourceAuthority": "全国健康保険協会 愛知支部",
+      "sourceTitle": "令和8年3月分（4月納付分）からの健康保険・厚生年金保険の保険料額表（愛知支部）",
+      "sourceUrl": "https://www.kyoukaikenpo.or.jp/assets/R8_23aichi.pdf",
+      "effectiveFrom": "2026-03-01",
+      "effectiveTo": null,
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "等級・率・端数処理は専用social-insurance masterを使用。"
+    },
+    "values": {
+      "bps": 993
+    }
+  },
+  "nursingInsurance": {
+    "metadata": {
+      "sourceAuthority": "全国健康保険協会 愛知支部",
+      "sourceTitle": "令和8年3月分（4月納付分）からの健康保険・厚生年金保険の保険料額表（愛知支部）",
+      "sourceUrl": "https://www.kyoukaikenpo.or.jp/assets/R8_23aichi.pdf",
+      "effectiveFrom": "2026-03-01",
+      "effectiveTo": null,
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "等級・率・端数処理は専用social-insurance masterを使用。"
+    },
+    "values": {
+      "bps": 162,
+      "minAge": 40,
+      "maxAgeExclusive": 65
+    }
+  },
+  "childrenSupport": {
+    "metadata": {
+      "sourceAuthority": "全国健康保険協会 愛知支部",
+      "sourceTitle": "令和8年3月分（4月納付分）からの健康保険・厚生年金保険の保険料額表（愛知支部）",
+      "sourceUrl": "https://www.kyoukaikenpo.or.jp/assets/R8_23aichi.pdf",
+      "effectiveFrom": "2026-04-01",
+      "effectiveTo": null,
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "一般被保険者は令和8年4月分から適用。"
+    },
+    "values": {
+      "bps": 23
+    }
+  },
+  "employeesPension": {
+    "metadata": {
+      "sourceAuthority": "全国健康保険協会 愛知支部",
+      "sourceTitle": "令和8年3月分（4月納付分）からの健康保険・厚生年金保険の保険料額表（愛知支部）",
+      "sourceUrl": "https://www.kyoukaikenpo.or.jp/assets/R8_23aichi.pdf",
+      "effectiveFrom": "2026-03-01",
+      "effectiveTo": null,
+      "verifiedAt": "2026-09-14",
+      "verificationScope": "等級・率・端数処理は専用social-insurance masterを使用。"
+    },
+    "values": {
+      "bps": 1830
+    }
+  }
+}

@@ -1,0 +1,1475 @@
+{
+  "metadata": {
+    "sourceAuthority": "全国健康保険協会 愛知支部",
+    "sourceTitle": "令和8年3月分（4月納付分）からの健康保険・厚生年金保険の保険料額表（愛知支部）",
+    "sourceUrl": "https://www.kyoukaikenpo.or.jp/assets/R8_23aichi.pdf",
+    "effectiveFrom": "2026-03-01",
+    "effectiveTo": null,
+    "verifiedAt": "2026-09-14",
+    "transcriptionNote": "報酬月額の以上はlower inclusive、未満はupper exclusive。健康50等級と厚生年金32等級を別管理。金額は1円の100分の1単位で保持。"
+  },
+  "ratesBps": {
+    "healthInsurance": 993,
+    "nursingCareInsurance": 162,
+    "childrenSupport": 23,
+    "employeesPension": 1830
+  },
+  "ratePeriods": [
+    {
+      "effectiveFrom": "2025-03-01",
+      "effectiveTo": "2026-02-28",
+      "healthInsurance": 1003,
+      "nursingCareInsurance": 159,
+      "childrenSupport": 0,
+      "employeesPension": 1830,
+      "sourceTitle": "令和7年3月分（4月納付分）からの健康保険・厚生年金保険の保険料額表（愛知支部）",
+      "sourceUrl": "https://www.kyoukaikenpo.or.jp/assets/23aichi_7.pdf",
+      "sourceSha256": "ca8741b123b1fd26739d10af48d5ca0e3200bdee220f6838865a4198e2dc1c52"
+    },
+    {
+      "effectiveFrom": "2026-03-01",
+      "effectiveTo": null,
+      "healthInsurance": 993,
+      "nursingCareInsurance": 162,
+      "childrenSupport": 23,
+      "childrenSupportEffectiveFrom": "2026-04-01",
+      "employeesPension": 1830,
+      "sourceTitle": "令和8年3月分（4月納付分）からの健康保険・厚生年金保険の保険料額表（愛知支部）",
+      "sourceUrl": "https://www.kyoukaikenpo.or.jp/assets/R8_23aichi.pdf"
+    }
+  ],
+  "childrenSupportEffectiveFrom": "2026-04-01",
+  "ageConditions": {
+    "nursingCareMinimumAge": 40,
+    "nursingCareMaximumAgeExclusive": 65
+  },
+  "healthInsuranceGrades": [
+    {
+      "grade": 1,
+      "remunerationLowerInclusive": null,
+      "remunerationUpperExclusive": 63000,
+      "standardMonthlyRemuneration": 58000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 575940,
+        "officialHalfPremiumHundredthsYen": 287970
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 93960,
+        "officialHalfPremiumHundredthsYen": 46980
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 669900,
+        "officialHalfPremiumHundredthsYen": 334950
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 13340,
+        "officialHalfPremiumHundredthsYen": 6670
+      }
+    },
+    {
+      "grade": 2,
+      "remunerationLowerInclusive": 63000,
+      "remunerationUpperExclusive": 73000,
+      "standardMonthlyRemuneration": 68000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 675240,
+        "officialHalfPremiumHundredthsYen": 337620
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 110160,
+        "officialHalfPremiumHundredthsYen": 55080
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 785400,
+        "officialHalfPremiumHundredthsYen": 392700
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 15640,
+        "officialHalfPremiumHundredthsYen": 7820
+      }
+    },
+    {
+      "grade": 3,
+      "remunerationLowerInclusive": 73000,
+      "remunerationUpperExclusive": 83000,
+      "standardMonthlyRemuneration": 78000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 774540,
+        "officialHalfPremiumHundredthsYen": 387270
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 126360,
+        "officialHalfPremiumHundredthsYen": 63180
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 900900,
+        "officialHalfPremiumHundredthsYen": 450450
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 17940,
+        "officialHalfPremiumHundredthsYen": 8970
+      }
+    },
+    {
+      "grade": 4,
+      "remunerationLowerInclusive": 83000,
+      "remunerationUpperExclusive": 93000,
+      "standardMonthlyRemuneration": 88000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 873840,
+        "officialHalfPremiumHundredthsYen": 436920
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 142560,
+        "officialHalfPremiumHundredthsYen": 71280
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 1016400,
+        "officialHalfPremiumHundredthsYen": 508200
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 20240,
+        "officialHalfPremiumHundredthsYen": 10120
+      }
+    },
+    {
+      "grade": 5,
+      "remunerationLowerInclusive": 93000,
+      "remunerationUpperExclusive": 101000,
+      "standardMonthlyRemuneration": 98000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 973140,
+        "officialHalfPremiumHundredthsYen": 486570
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 158760,
+        "officialHalfPremiumHundredthsYen": 79380
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 1131900,
+        "officialHalfPremiumHundredthsYen": 565950
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 22540,
+        "officialHalfPremiumHundredthsYen": 11270
+      }
+    },
+    {
+      "grade": 6,
+      "remunerationLowerInclusive": 101000,
+      "remunerationUpperExclusive": 107000,
+      "standardMonthlyRemuneration": 104000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 1032720,
+        "officialHalfPremiumHundredthsYen": 516360
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 168480,
+        "officialHalfPremiumHundredthsYen": 84240
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 1201200,
+        "officialHalfPremiumHundredthsYen": 600600
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 23920,
+        "officialHalfPremiumHundredthsYen": 11960
+      }
+    },
+    {
+      "grade": 7,
+      "remunerationLowerInclusive": 107000,
+      "remunerationUpperExclusive": 114000,
+      "standardMonthlyRemuneration": 110000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 1092300,
+        "officialHalfPremiumHundredthsYen": 546150
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 178200,
+        "officialHalfPremiumHundredthsYen": 89100
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 1270500,
+        "officialHalfPremiumHundredthsYen": 635250
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 25300,
+        "officialHalfPremiumHundredthsYen": 12650
+      }
+    },
+    {
+      "grade": 8,
+      "remunerationLowerInclusive": 114000,
+      "remunerationUpperExclusive": 122000,
+      "standardMonthlyRemuneration": 118000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 1171740,
+        "officialHalfPremiumHundredthsYen": 585870
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 191160,
+        "officialHalfPremiumHundredthsYen": 95580
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 1362900,
+        "officialHalfPremiumHundredthsYen": 681450
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 27140,
+        "officialHalfPremiumHundredthsYen": 13570
+      }
+    },
+    {
+      "grade": 9,
+      "remunerationLowerInclusive": 122000,
+      "remunerationUpperExclusive": 130000,
+      "standardMonthlyRemuneration": 126000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 1251180,
+        "officialHalfPremiumHundredthsYen": 625590
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 204120,
+        "officialHalfPremiumHundredthsYen": 102060
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 1455300,
+        "officialHalfPremiumHundredthsYen": 727650
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 28980,
+        "officialHalfPremiumHundredthsYen": 14490
+      }
+    },
+    {
+      "grade": 10,
+      "remunerationLowerInclusive": 130000,
+      "remunerationUpperExclusive": 138000,
+      "standardMonthlyRemuneration": 134000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 1330620,
+        "officialHalfPremiumHundredthsYen": 665310
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 217080,
+        "officialHalfPremiumHundredthsYen": 108540
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 1547700,
+        "officialHalfPremiumHundredthsYen": 773850
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 30820,
+        "officialHalfPremiumHundredthsYen": 15410
+      }
+    },
+    {
+      "grade": 11,
+      "remunerationLowerInclusive": 138000,
+      "remunerationUpperExclusive": 146000,
+      "standardMonthlyRemuneration": 142000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 1410060,
+        "officialHalfPremiumHundredthsYen": 705030
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 230040,
+        "officialHalfPremiumHundredthsYen": 115020
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 1640100,
+        "officialHalfPremiumHundredthsYen": 820050
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 32660,
+        "officialHalfPremiumHundredthsYen": 16330
+      }
+    },
+    {
+      "grade": 12,
+      "remunerationLowerInclusive": 146000,
+      "remunerationUpperExclusive": 155000,
+      "standardMonthlyRemuneration": 150000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 1489500,
+        "officialHalfPremiumHundredthsYen": 744750
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 243000,
+        "officialHalfPremiumHundredthsYen": 121500
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 1732500,
+        "officialHalfPremiumHundredthsYen": 866250
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 34500,
+        "officialHalfPremiumHundredthsYen": 17250
+      }
+    },
+    {
+      "grade": 13,
+      "remunerationLowerInclusive": 155000,
+      "remunerationUpperExclusive": 165000,
+      "standardMonthlyRemuneration": 160000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 1588800,
+        "officialHalfPremiumHundredthsYen": 794400
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 259200,
+        "officialHalfPremiumHundredthsYen": 129600
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 1848000,
+        "officialHalfPremiumHundredthsYen": 924000
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 36800,
+        "officialHalfPremiumHundredthsYen": 18400
+      }
+    },
+    {
+      "grade": 14,
+      "remunerationLowerInclusive": 165000,
+      "remunerationUpperExclusive": 175000,
+      "standardMonthlyRemuneration": 170000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 1688100,
+        "officialHalfPremiumHundredthsYen": 844050
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 275400,
+        "officialHalfPremiumHundredthsYen": 137700
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 1963500,
+        "officialHalfPremiumHundredthsYen": 981750
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 39100,
+        "officialHalfPremiumHundredthsYen": 19550
+      }
+    },
+    {
+      "grade": 15,
+      "remunerationLowerInclusive": 175000,
+      "remunerationUpperExclusive": 185000,
+      "standardMonthlyRemuneration": 180000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 1787400,
+        "officialHalfPremiumHundredthsYen": 893700
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 291600,
+        "officialHalfPremiumHundredthsYen": 145800
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 2079000,
+        "officialHalfPremiumHundredthsYen": 1039500
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 41400,
+        "officialHalfPremiumHundredthsYen": 20700
+      }
+    },
+    {
+      "grade": 16,
+      "remunerationLowerInclusive": 185000,
+      "remunerationUpperExclusive": 195000,
+      "standardMonthlyRemuneration": 190000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 1886700,
+        "officialHalfPremiumHundredthsYen": 943350
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 307800,
+        "officialHalfPremiumHundredthsYen": 153900
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 2194500,
+        "officialHalfPremiumHundredthsYen": 1097250
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 43700,
+        "officialHalfPremiumHundredthsYen": 21850
+      }
+    },
+    {
+      "grade": 17,
+      "remunerationLowerInclusive": 195000,
+      "remunerationUpperExclusive": 210000,
+      "standardMonthlyRemuneration": 200000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 1986000,
+        "officialHalfPremiumHundredthsYen": 993000
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 324000,
+        "officialHalfPremiumHundredthsYen": 162000
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 2310000,
+        "officialHalfPremiumHundredthsYen": 1155000
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 46000,
+        "officialHalfPremiumHundredthsYen": 23000
+      }
+    },
+    {
+      "grade": 18,
+      "remunerationLowerInclusive": 210000,
+      "remunerationUpperExclusive": 230000,
+      "standardMonthlyRemuneration": 220000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 2184600,
+        "officialHalfPremiumHundredthsYen": 1092300
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 356400,
+        "officialHalfPremiumHundredthsYen": 178200
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 2541000,
+        "officialHalfPremiumHundredthsYen": 1270500
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 50600,
+        "officialHalfPremiumHundredthsYen": 25300
+      }
+    },
+    {
+      "grade": 19,
+      "remunerationLowerInclusive": 230000,
+      "remunerationUpperExclusive": 250000,
+      "standardMonthlyRemuneration": 240000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 2383200,
+        "officialHalfPremiumHundredthsYen": 1191600
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 388800,
+        "officialHalfPremiumHundredthsYen": 194400
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 2772000,
+        "officialHalfPremiumHundredthsYen": 1386000
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 55200,
+        "officialHalfPremiumHundredthsYen": 27600
+      }
+    },
+    {
+      "grade": 20,
+      "remunerationLowerInclusive": 250000,
+      "remunerationUpperExclusive": 270000,
+      "standardMonthlyRemuneration": 260000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 2581800,
+        "officialHalfPremiumHundredthsYen": 1290900
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 421200,
+        "officialHalfPremiumHundredthsYen": 210600
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 3003000,
+        "officialHalfPremiumHundredthsYen": 1501500
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 59800,
+        "officialHalfPremiumHundredthsYen": 29900
+      }
+    },
+    {
+      "grade": 21,
+      "remunerationLowerInclusive": 270000,
+      "remunerationUpperExclusive": 290000,
+      "standardMonthlyRemuneration": 280000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 2780400,
+        "officialHalfPremiumHundredthsYen": 1390200
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 453600,
+        "officialHalfPremiumHundredthsYen": 226800
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 3234000,
+        "officialHalfPremiumHundredthsYen": 1617000
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 64400,
+        "officialHalfPremiumHundredthsYen": 32200
+      }
+    },
+    {
+      "grade": 22,
+      "remunerationLowerInclusive": 290000,
+      "remunerationUpperExclusive": 310000,
+      "standardMonthlyRemuneration": 300000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 2979000,
+        "officialHalfPremiumHundredthsYen": 1489500
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 486000,
+        "officialHalfPremiumHundredthsYen": 243000
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 3465000,
+        "officialHalfPremiumHundredthsYen": 1732500
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 69000,
+        "officialHalfPremiumHundredthsYen": 34500
+      }
+    },
+    {
+      "grade": 23,
+      "remunerationLowerInclusive": 310000,
+      "remunerationUpperExclusive": 330000,
+      "standardMonthlyRemuneration": 320000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 3177600,
+        "officialHalfPremiumHundredthsYen": 1588800
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 518400,
+        "officialHalfPremiumHundredthsYen": 259200
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 3696000,
+        "officialHalfPremiumHundredthsYen": 1848000
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 73600,
+        "officialHalfPremiumHundredthsYen": 36800
+      }
+    },
+    {
+      "grade": 24,
+      "remunerationLowerInclusive": 330000,
+      "remunerationUpperExclusive": 350000,
+      "standardMonthlyRemuneration": 340000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 3376200,
+        "officialHalfPremiumHundredthsYen": 1688100
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 550800,
+        "officialHalfPremiumHundredthsYen": 275400
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 3927000,
+        "officialHalfPremiumHundredthsYen": 1963500
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 78200,
+        "officialHalfPremiumHundredthsYen": 39100
+      }
+    },
+    {
+      "grade": 25,
+      "remunerationLowerInclusive": 350000,
+      "remunerationUpperExclusive": 370000,
+      "standardMonthlyRemuneration": 360000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 3574800,
+        "officialHalfPremiumHundredthsYen": 1787400
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 583200,
+        "officialHalfPremiumHundredthsYen": 291600
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 4158000,
+        "officialHalfPremiumHundredthsYen": 2079000
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 82800,
+        "officialHalfPremiumHundredthsYen": 41400
+      }
+    },
+    {
+      "grade": 26,
+      "remunerationLowerInclusive": 370000,
+      "remunerationUpperExclusive": 395000,
+      "standardMonthlyRemuneration": 380000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 3773400,
+        "officialHalfPremiumHundredthsYen": 1886700
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 615600,
+        "officialHalfPremiumHundredthsYen": 307800
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 4389000,
+        "officialHalfPremiumHundredthsYen": 2194500
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 87400,
+        "officialHalfPremiumHundredthsYen": 43700
+      }
+    },
+    {
+      "grade": 27,
+      "remunerationLowerInclusive": 395000,
+      "remunerationUpperExclusive": 425000,
+      "standardMonthlyRemuneration": 410000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 4071300,
+        "officialHalfPremiumHundredthsYen": 2035650
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 664200,
+        "officialHalfPremiumHundredthsYen": 332100
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 4735500,
+        "officialHalfPremiumHundredthsYen": 2367750
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 94300,
+        "officialHalfPremiumHundredthsYen": 47150
+      }
+    },
+    {
+      "grade": 28,
+      "remunerationLowerInclusive": 425000,
+      "remunerationUpperExclusive": 455000,
+      "standardMonthlyRemuneration": 440000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 4369200,
+        "officialHalfPremiumHundredthsYen": 2184600
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 712800,
+        "officialHalfPremiumHundredthsYen": 356400
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 5082000,
+        "officialHalfPremiumHundredthsYen": 2541000
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 101200,
+        "officialHalfPremiumHundredthsYen": 50600
+      }
+    },
+    {
+      "grade": 29,
+      "remunerationLowerInclusive": 455000,
+      "remunerationUpperExclusive": 485000,
+      "standardMonthlyRemuneration": 470000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 4667100,
+        "officialHalfPremiumHundredthsYen": 2333550
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 761400,
+        "officialHalfPremiumHundredthsYen": 380700
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 5428500,
+        "officialHalfPremiumHundredthsYen": 2714250
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 108100,
+        "officialHalfPremiumHundredthsYen": 54050
+      }
+    },
+    {
+      "grade": 30,
+      "remunerationLowerInclusive": 485000,
+      "remunerationUpperExclusive": 515000,
+      "standardMonthlyRemuneration": 500000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 4965000,
+        "officialHalfPremiumHundredthsYen": 2482500
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 810000,
+        "officialHalfPremiumHundredthsYen": 405000
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 5775000,
+        "officialHalfPremiumHundredthsYen": 2887500
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 115000,
+        "officialHalfPremiumHundredthsYen": 57500
+      }
+    },
+    {
+      "grade": 31,
+      "remunerationLowerInclusive": 515000,
+      "remunerationUpperExclusive": 545000,
+      "standardMonthlyRemuneration": 530000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 5262900,
+        "officialHalfPremiumHundredthsYen": 2631450
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 858600,
+        "officialHalfPremiumHundredthsYen": 429300
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 6121500,
+        "officialHalfPremiumHundredthsYen": 3060750
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 121900,
+        "officialHalfPremiumHundredthsYen": 60950
+      }
+    },
+    {
+      "grade": 32,
+      "remunerationLowerInclusive": 545000,
+      "remunerationUpperExclusive": 575000,
+      "standardMonthlyRemuneration": 560000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 5560800,
+        "officialHalfPremiumHundredthsYen": 2780400
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 907200,
+        "officialHalfPremiumHundredthsYen": 453600
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 6468000,
+        "officialHalfPremiumHundredthsYen": 3234000
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 128800,
+        "officialHalfPremiumHundredthsYen": 64400
+      }
+    },
+    {
+      "grade": 33,
+      "remunerationLowerInclusive": 575000,
+      "remunerationUpperExclusive": 605000,
+      "standardMonthlyRemuneration": 590000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 5858700,
+        "officialHalfPremiumHundredthsYen": 2929350
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 955800,
+        "officialHalfPremiumHundredthsYen": 477900
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 6814500,
+        "officialHalfPremiumHundredthsYen": 3407250
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 135700,
+        "officialHalfPremiumHundredthsYen": 67850
+      }
+    },
+    {
+      "grade": 34,
+      "remunerationLowerInclusive": 605000,
+      "remunerationUpperExclusive": 635000,
+      "standardMonthlyRemuneration": 620000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 6156600,
+        "officialHalfPremiumHundredthsYen": 3078300
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 1004400,
+        "officialHalfPremiumHundredthsYen": 502200
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 7161000,
+        "officialHalfPremiumHundredthsYen": 3580500
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 142600,
+        "officialHalfPremiumHundredthsYen": 71300
+      }
+    },
+    {
+      "grade": 35,
+      "remunerationLowerInclusive": 635000,
+      "remunerationUpperExclusive": 665000,
+      "standardMonthlyRemuneration": 650000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 6454500,
+        "officialHalfPremiumHundredthsYen": 3227250
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 1053000,
+        "officialHalfPremiumHundredthsYen": 526500
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 7507500,
+        "officialHalfPremiumHundredthsYen": 3753750
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 149500,
+        "officialHalfPremiumHundredthsYen": 74750
+      }
+    },
+    {
+      "grade": 36,
+      "remunerationLowerInclusive": 665000,
+      "remunerationUpperExclusive": 695000,
+      "standardMonthlyRemuneration": 680000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 6752400,
+        "officialHalfPremiumHundredthsYen": 3376200
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 1101600,
+        "officialHalfPremiumHundredthsYen": 550800
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 7854000,
+        "officialHalfPremiumHundredthsYen": 3927000
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 156400,
+        "officialHalfPremiumHundredthsYen": 78200
+      }
+    },
+    {
+      "grade": 37,
+      "remunerationLowerInclusive": 695000,
+      "remunerationUpperExclusive": 730000,
+      "standardMonthlyRemuneration": 710000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 7050300,
+        "officialHalfPremiumHundredthsYen": 3525150
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 1150200,
+        "officialHalfPremiumHundredthsYen": 575100
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 8200500,
+        "officialHalfPremiumHundredthsYen": 4100250
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 163300,
+        "officialHalfPremiumHundredthsYen": 81650
+      }
+    },
+    {
+      "grade": 38,
+      "remunerationLowerInclusive": 730000,
+      "remunerationUpperExclusive": 770000,
+      "standardMonthlyRemuneration": 750000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 7447500,
+        "officialHalfPremiumHundredthsYen": 3723750
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 1215000,
+        "officialHalfPremiumHundredthsYen": 607500
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 8662500,
+        "officialHalfPremiumHundredthsYen": 4331250
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 172500,
+        "officialHalfPremiumHundredthsYen": 86250
+      }
+    },
+    {
+      "grade": 39,
+      "remunerationLowerInclusive": 770000,
+      "remunerationUpperExclusive": 810000,
+      "standardMonthlyRemuneration": 790000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 7844700,
+        "officialHalfPremiumHundredthsYen": 3922350
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 1279800,
+        "officialHalfPremiumHundredthsYen": 639900
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 9124500,
+        "officialHalfPremiumHundredthsYen": 4562250
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 181700,
+        "officialHalfPremiumHundredthsYen": 90850
+      }
+    },
+    {
+      "grade": 40,
+      "remunerationLowerInclusive": 810000,
+      "remunerationUpperExclusive": 855000,
+      "standardMonthlyRemuneration": 830000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 8241900,
+        "officialHalfPremiumHundredthsYen": 4120950
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 1344600,
+        "officialHalfPremiumHundredthsYen": 672300
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 9586500,
+        "officialHalfPremiumHundredthsYen": 4793250
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 190900,
+        "officialHalfPremiumHundredthsYen": 95450
+      }
+    },
+    {
+      "grade": 41,
+      "remunerationLowerInclusive": 855000,
+      "remunerationUpperExclusive": 905000,
+      "standardMonthlyRemuneration": 880000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 8738400,
+        "officialHalfPremiumHundredthsYen": 4369200
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 1425600,
+        "officialHalfPremiumHundredthsYen": 712800
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 10164000,
+        "officialHalfPremiumHundredthsYen": 5082000
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 202400,
+        "officialHalfPremiumHundredthsYen": 101200
+      }
+    },
+    {
+      "grade": 42,
+      "remunerationLowerInclusive": 905000,
+      "remunerationUpperExclusive": 955000,
+      "standardMonthlyRemuneration": 930000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 9234900,
+        "officialHalfPremiumHundredthsYen": 4617450
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 1506600,
+        "officialHalfPremiumHundredthsYen": 753300
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 10741500,
+        "officialHalfPremiumHundredthsYen": 5370750
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 213900,
+        "officialHalfPremiumHundredthsYen": 106950
+      }
+    },
+    {
+      "grade": 43,
+      "remunerationLowerInclusive": 955000,
+      "remunerationUpperExclusive": 1005000,
+      "standardMonthlyRemuneration": 980000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 9731400,
+        "officialHalfPremiumHundredthsYen": 4865700
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 1587600,
+        "officialHalfPremiumHundredthsYen": 793800
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 11319000,
+        "officialHalfPremiumHundredthsYen": 5659500
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 225400,
+        "officialHalfPremiumHundredthsYen": 112700
+      }
+    },
+    {
+      "grade": 44,
+      "remunerationLowerInclusive": 1005000,
+      "remunerationUpperExclusive": 1055000,
+      "standardMonthlyRemuneration": 1030000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 10227900,
+        "officialHalfPremiumHundredthsYen": 5113950
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 1668600,
+        "officialHalfPremiumHundredthsYen": 834300
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 11896500,
+        "officialHalfPremiumHundredthsYen": 5948250
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 236900,
+        "officialHalfPremiumHundredthsYen": 118450
+      }
+    },
+    {
+      "grade": 45,
+      "remunerationLowerInclusive": 1055000,
+      "remunerationUpperExclusive": 1115000,
+      "standardMonthlyRemuneration": 1090000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 10823700,
+        "officialHalfPremiumHundredthsYen": 5411850
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 1765800,
+        "officialHalfPremiumHundredthsYen": 882900
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 12589500,
+        "officialHalfPremiumHundredthsYen": 6294750
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 250700,
+        "officialHalfPremiumHundredthsYen": 125350
+      }
+    },
+    {
+      "grade": 46,
+      "remunerationLowerInclusive": 1115000,
+      "remunerationUpperExclusive": 1175000,
+      "standardMonthlyRemuneration": 1150000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 11419500,
+        "officialHalfPremiumHundredthsYen": 5709750
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 1863000,
+        "officialHalfPremiumHundredthsYen": 931500
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 13282500,
+        "officialHalfPremiumHundredthsYen": 6641250
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 264500,
+        "officialHalfPremiumHundredthsYen": 132250
+      }
+    },
+    {
+      "grade": 47,
+      "remunerationLowerInclusive": 1175000,
+      "remunerationUpperExclusive": 1235000,
+      "standardMonthlyRemuneration": 1210000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 12015300,
+        "officialHalfPremiumHundredthsYen": 6007650
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 1960200,
+        "officialHalfPremiumHundredthsYen": 980100
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 13975500,
+        "officialHalfPremiumHundredthsYen": 6987750
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 278300,
+        "officialHalfPremiumHundredthsYen": 139150
+      }
+    },
+    {
+      "grade": 48,
+      "remunerationLowerInclusive": 1235000,
+      "remunerationUpperExclusive": 1295000,
+      "standardMonthlyRemuneration": 1270000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 12611100,
+        "officialHalfPremiumHundredthsYen": 6305550
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 2057400,
+        "officialHalfPremiumHundredthsYen": 1028700
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 14668500,
+        "officialHalfPremiumHundredthsYen": 7334250
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 292100,
+        "officialHalfPremiumHundredthsYen": 146050
+      }
+    },
+    {
+      "grade": 49,
+      "remunerationLowerInclusive": 1295000,
+      "remunerationUpperExclusive": 1355000,
+      "standardMonthlyRemuneration": 1330000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 13206900,
+        "officialHalfPremiumHundredthsYen": 6603450
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 2154600,
+        "officialHalfPremiumHundredthsYen": 1077300
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 15361500,
+        "officialHalfPremiumHundredthsYen": 7680750
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 305900,
+        "officialHalfPremiumHundredthsYen": 152950
+      }
+    },
+    {
+      "grade": 50,
+      "remunerationLowerInclusive": 1355000,
+      "remunerationUpperExclusive": null,
+      "standardMonthlyRemuneration": 1390000,
+      "healthInsurance": {
+        "fullPremiumHundredthsYen": 13802700,
+        "officialHalfPremiumHundredthsYen": 6901350
+      },
+      "nursingCareInsurance": {
+        "fullPremiumHundredthsYen": 2251800,
+        "officialHalfPremiumHundredthsYen": 1125900
+      },
+      "healthPlusNursingCareOfficial": {
+        "fullPremiumHundredthsYen": 16054500,
+        "officialHalfPremiumHundredthsYen": 8027250
+      },
+      "childrenSupport": {
+        "fullPremiumHundredthsYen": 319700,
+        "officialHalfPremiumHundredthsYen": 159850
+      }
+    }
+  ],
+  "employeesPensionGrades": [
+    {
+      "grade": 1,
+      "remunerationLowerInclusive": null,
+      "remunerationUpperExclusive": 93000,
+      "standardMonthlyRemuneration": 88000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 1610400,
+        "officialHalfPremiumHundredthsYen": 805200
+      }
+    },
+    {
+      "grade": 2,
+      "remunerationLowerInclusive": 93000,
+      "remunerationUpperExclusive": 101000,
+      "standardMonthlyRemuneration": 98000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 1793400,
+        "officialHalfPremiumHundredthsYen": 896700
+      }
+    },
+    {
+      "grade": 3,
+      "remunerationLowerInclusive": 101000,
+      "remunerationUpperExclusive": 107000,
+      "standardMonthlyRemuneration": 104000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 1903200,
+        "officialHalfPremiumHundredthsYen": 951600
+      }
+    },
+    {
+      "grade": 4,
+      "remunerationLowerInclusive": 107000,
+      "remunerationUpperExclusive": 114000,
+      "standardMonthlyRemuneration": 110000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 2013000,
+        "officialHalfPremiumHundredthsYen": 1006500
+      }
+    },
+    {
+      "grade": 5,
+      "remunerationLowerInclusive": 114000,
+      "remunerationUpperExclusive": 122000,
+      "standardMonthlyRemuneration": 118000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 2159400,
+        "officialHalfPremiumHundredthsYen": 1079700
+      }
+    },
+    {
+      "grade": 6,
+      "remunerationLowerInclusive": 122000,
+      "remunerationUpperExclusive": 130000,
+      "standardMonthlyRemuneration": 126000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 2305800,
+        "officialHalfPremiumHundredthsYen": 1152900
+      }
+    },
+    {
+      "grade": 7,
+      "remunerationLowerInclusive": 130000,
+      "remunerationUpperExclusive": 138000,
+      "standardMonthlyRemuneration": 134000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 2452200,
+        "officialHalfPremiumHundredthsYen": 1226100
+      }
+    },
+    {
+      "grade": 8,
+      "remunerationLowerInclusive": 138000,
+      "remunerationUpperExclusive": 146000,
+      "standardMonthlyRemuneration": 142000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 2598600,
+        "officialHalfPremiumHundredthsYen": 1299300
+      }
+    },
+    {
+      "grade": 9,
+      "remunerationLowerInclusive": 146000,
+      "remunerationUpperExclusive": 155000,
+      "standardMonthlyRemuneration": 150000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 2745000,
+        "officialHalfPremiumHundredthsYen": 1372500
+      }
+    },
+    {
+      "grade": 10,
+      "remunerationLowerInclusive": 155000,
+      "remunerationUpperExclusive": 165000,
+      "standardMonthlyRemuneration": 160000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 2928000,
+        "officialHalfPremiumHundredthsYen": 1464000
+      }
+    },
+    {
+      "grade": 11,
+      "remunerationLowerInclusive": 165000,
+      "remunerationUpperExclusive": 175000,
+      "standardMonthlyRemuneration": 170000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 3111000,
+        "officialHalfPremiumHundredthsYen": 1555500
+      }
+    },
+    {
+      "grade": 12,
+      "remunerationLowerInclusive": 175000,
+      "remunerationUpperExclusive": 185000,
+      "standardMonthlyRemuneration": 180000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 3294000,
+        "officialHalfPremiumHundredthsYen": 1647000
+      }
+    },
+    {
+      "grade": 13,
+      "remunerationLowerInclusive": 185000,
+      "remunerationUpperExclusive": 195000,
+      "standardMonthlyRemuneration": 190000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 3477000,
+        "officialHalfPremiumHundredthsYen": 1738500
+      }
+    },
+    {
+      "grade": 14,
+      "remunerationLowerInclusive": 195000,
+      "remunerationUpperExclusive": 210000,
+      "standardMonthlyRemuneration": 200000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 3660000,
+        "officialHalfPremiumHundredthsYen": 1830000
+      }
+    },
+    {
+      "grade": 15,
+      "remunerationLowerInclusive": 210000,
+      "remunerationUpperExclusive": 230000,
+      "standardMonthlyRemuneration": 220000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 4026000,
+        "officialHalfPremiumHundredthsYen": 2013000
+      }
+    },
+    {
+      "grade": 16,
+      "remunerationLowerInclusive": 230000,
+      "remunerationUpperExclusive": 250000,
+      "standardMonthlyRemuneration": 240000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 4392000,
+        "officialHalfPremiumHundredthsYen": 2196000
+      }
+    },
+    {
+      "grade": 17,
+      "remunerationLowerInclusive": 250000,
+      "remunerationUpperExclusive": 270000,
+      "standardMonthlyRemuneration": 260000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 4758000,
+        "officialHalfPremiumHundredthsYen": 2379000
+      }
+    },
+    {
+      "grade": 18,
+      "remunerationLowerInclusive": 270000,
+      "remunerationUpperExclusive": 290000,
+      "standardMonthlyRemuneration": 280000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 5124000,
+        "officialHalfPremiumHundredthsYen": 2562000
+      }
+    },
+    {
+      "grade": 19,
+      "remunerationLowerInclusive": 290000,
+      "remunerationUpperExclusive": 310000,
+      "standardMonthlyRemuneration": 300000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 5490000,
+        "officialHalfPremiumHundredthsYen": 2745000
+      }
+    },
+    {
+      "grade": 20,
+      "remunerationLowerInclusive": 310000,
+      "remunerationUpperExclusive": 330000,
+      "standardMonthlyRemuneration": 320000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 5856000,
+        "officialHalfPremiumHundredthsYen": 2928000
+      }
+    },
+    {
+      "grade": 21,
+      "remunerationLowerInclusive": 330000,
+      "remunerationUpperExclusive": 350000,
+      "standardMonthlyRemuneration": 340000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 6222000,
+        "officialHalfPremiumHundredthsYen": 3111000
+      }
+    },
+    {
+      "grade": 22,
+      "remunerationLowerInclusive": 350000,
+      "remunerationUpperExclusive": 370000,
+      "standardMonthlyRemuneration": 360000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 6588000,
+        "officialHalfPremiumHundredthsYen": 3294000
+      }
+    },
+    {
+      "grade": 23,
+      "remunerationLowerInclusive": 370000,
+      "remunerationUpperExclusive": 395000,
+      "standardMonthlyRemuneration": 380000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 6954000,
+        "officialHalfPremiumHundredthsYen": 3477000
+      }
+    },
+    {
+      "grade": 24,
+      "remunerationLowerInclusive": 395000,
+      "remunerationUpperExclusive": 425000,
+      "standardMonthlyRemuneration": 410000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 7503000,
+        "officialHalfPremiumHundredthsYen": 3751500
+      }
+    },
+    {
+      "grade": 25,
+      "remunerationLowerInclusive": 425000,
+      "remunerationUpperExclusive": 455000,
+      "standardMonthlyRemuneration": 440000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 8052000,
+        "officialHalfPremiumHundredthsYen": 4026000
+      }
+    },
+    {
+      "grade": 26,
+      "remunerationLowerInclusive": 455000,
+      "remunerationUpperExclusive": 485000,
+      "standardMonthlyRemuneration": 470000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 8601000,
+        "officialHalfPremiumHundredthsYen": 4300500
+      }
+    },
+    {
+      "grade": 27,
+      "remunerationLowerInclusive": 485000,
+      "remunerationUpperExclusive": 515000,
+      "standardMonthlyRemuneration": 500000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 9150000,
+        "officialHalfPremiumHundredthsYen": 4575000
+      }
+    },
+    {
+      "grade": 28,
+      "remunerationLowerInclusive": 515000,
+      "remunerationUpperExclusive": 545000,
+      "standardMonthlyRemuneration": 530000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 9699000,
+        "officialHalfPremiumHundredthsYen": 4849500
+      }
+    },
+    {
+      "grade": 29,
+      "remunerationLowerInclusive": 545000,
+      "remunerationUpperExclusive": 575000,
+      "standardMonthlyRemuneration": 560000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 10248000,
+        "officialHalfPremiumHundredthsYen": 5124000
+      }
+    },
+    {
+      "grade": 30,
+      "remunerationLowerInclusive": 575000,
+      "remunerationUpperExclusive": 605000,
+      "standardMonthlyRemuneration": 590000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 10797000,
+        "officialHalfPremiumHundredthsYen": 5398500
+      }
+    },
+    {
+      "grade": 31,
+      "remunerationLowerInclusive": 605000,
+      "remunerationUpperExclusive": 635000,
+      "standardMonthlyRemuneration": 620000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 11346000,
+        "officialHalfPremiumHundredthsYen": 5673000
+      }
+    },
+    {
+      "grade": 32,
+      "remunerationLowerInclusive": 635000,
+      "remunerationUpperExclusive": null,
+      "standardMonthlyRemuneration": 650000,
+      "employeesPension": {
+        "fullPremiumHundredthsYen": 11895000,
+        "officialHalfPremiumHundredthsYen": 5947500
+      }
+    }
+  ],
+  "rounding": {
+    "payrollWithholdingEmployee": "50銭以下切捨て、50銭超切上げ",
+    "officeTotal": "被保険者個々の丸め前保険料を合算し、合計の1円未満切捨て",
+    "employer": "事業所納付総額－本人負担合計"
+  }
+}

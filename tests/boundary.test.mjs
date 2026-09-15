@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import * as e from '../src/index.ts';
+// Literal independently calculated expectations. Never snapshot engine outputs.
+for(const [income,expected] of [[1949000,97450],[1950000,97500],[3299000,232400],[3300000,232500],[6949000,962300],[6950000,962500],[8999000,1433770],[9000000,1434000],[17999000,4403670],[18000000,4404000],[39999000,13203600],[40000000,13204000]])test(`所得税 ${income}`,()=>assert.equal(e.baseIncomeTax(income),expected));
+for(const [income,expected] of [[1320000,1040000],[1320001,620000],[3360000,620000],[3360001,680000],[4890000,680000],[4890001,670000],[6550000,670000],[6550001,620000],[23500000,620000],[23500001,480000],[24000000,480000],[24000001,320000],[24500000,320000],[24500001,160000],[25000000,160000],[25000001,0]])test(`基礎控除 ${income}`,()=>assert.equal(e.incomeTaxBasicDeduction(income),expected));
+for(const [income,n,d] of [[2200000,740000,1],[2200001,7400003,10],[3600000,1160000,1],[3600001,11600002,10],[6600000,1760000,1],[6600001,17600001,10],[8500000,1950000,1],[8500001,1950000,1]])test(`給与所得控除raw ${income}`,()=>assert.deepEqual(e.salaryIncomeRaw(income).salaryIncomeDeduction,e.fraction(BigInt(n),BigInt(d))));
+for(const [age,expected] of [[39,0],[40,16120],[64,16120],[65,0]])test(`国保介護年齢 ${age}`,()=>assert.equal(e.exactInteger(e.householdNhiRaw([{age,businessIncomeAfterBlueDeduction:0,previousTotalIncome:0},{age:30,businessIncomeAfterBlueDeduction:0,previousTotalIncome:0}]).nursing),expected));
+for(const [income,n,d] of [[7999999,23999997,20],[8000000,1200000,1],[8000001,150000029,125]])test(`法人税raw ${income}`,()=>assert.deepEqual(e.corporationTaxRaw(income),e.fraction(BigInt(n),BigInt(d))));
+for(const [income,n,d] of [[3999999,27999993,200],[4000000,140000,1],[4000001,140000053,1000],[7999999,351999947,1000],[8000000,352000,1],[8000001,35200007,100]])test(`事業税raw ${income}`,()=>assert.deepEqual(e.corporateEnterpriseTaxRaw(income,12).baseCorporateEnterpriseTax,e.fraction(BigInt(n),BigInt(d))));
+for(const [capital,expected] of [[9999999,true],[10000000,false]])test(`免税候補資本金 ${capital}`,()=>assert.equal(e.firstPeriodExemptionCandidate(capital,false,false,false),expected));
+for(const [income,expected] of [[24000000,430000],[24000001,290000],[24500000,290000],[24500001,150000],[25000000,150000],[25000001,0]])test(`国保基礎控除 ${income}`,()=>assert.equal(e.nhiBasicDeduction(income),expected));
+test('調整控除の所得制限は2500万円超',()=>{assert.equal(e.exactInteger(e.adjustmentDeduction(2500000,50000,25000000).municipal),2000);assert.equal(e.exactInteger(e.adjustmentDeduction(2500000,50000,25000001).municipal),0);});
+test('調整控除200万円境界',()=>{assert.equal(e.adjustmentDeduction(2000000,330000,2500000).base,330000);assert.equal(e.adjustmentDeduction(2000001,330000,2500000).base,329999);});

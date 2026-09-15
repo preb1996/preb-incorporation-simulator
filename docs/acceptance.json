@@ -1,0 +1,20 @@
+{
+  "specification": "1.0",
+  "implementationStatus": "PHASE_1_CANDIDATE",
+  "requirements": [
+    {"id":"resident-tax","status":"PASS","reason":"令和8年度公式の控除・非課税・所得割・調整控除・均等割・森林環境税・段階別端数処理を実装"},
+    {"id":"social-insurance","status":"PASS","reason":"公式健康50等級・厚生年金32等級、本人/事業所/会社端数処理、年齢・月条件を実装"},
+    {"id":"social-insurance-jan-feb","status":"PASS","reason":"令和7年愛知支部表を2026年1・2月へ期間指定し、3月以降の令和8年表と分離"},
+    {"id":"nhi-final","status":"PASS","reason":"4区分を各10円未満切捨て後に世帯合計し、可処分所得では一度だけ控除"},
+    {"id":"nhi-deduction-payer","status":"PASS","reason":"所得控除は明示された実支払者へ全額帰属。支払者未入力をINVALID_INPUT"},
+    {"id":"corporate-final","status":"PASS","reason":"法人税・県民税・市民税・事業税・特別法人事業税・消費税を課税標準/中間/確定段階別に処理"},
+    {"id":"first-year","status":"PASS","reason":"設立日・資格取得日・報酬月・国保喪失月・年金切替月・均等割月数・事業税月数を別管理し月別実額を合算"},
+    {"id":"comparison","status":"PASS","reason":"2026年の完全入力についてCASE-A/B、法人留保、世帯+法人純資産増加を統合計算"},
+    {"id":"optimizer","status":"OUT_OF_PHASE","reason":"今回のPhase 1完了条件は計算エンジン+Golden Test。推薦探索は実行せずfail closed"},
+    {"id":"golden-01","status":"PASS","reason":"全入力fixture、期待値ごとのsource/formula/rounding/verifiedAt、src非依存検算コードと一致"},
+    {"id":"golden-06","status":"PASS","reason":"公式80境界の-1円/境界/+1円を検証"},
+    {"id":"nagoya-adjustment-formula","status":"PASS","reason":"名古屋市公式例140,200円と課税所得250万円ケース245,300円が一致"},
+    {"id":"ui-zero","status":"PASS","reason":"UIファイル・UI依存なし"},
+    {"id":"corporate-cash-mvp","status":"PASS","reason":"架空の期末現金を生成せず赤字はWARNING。UNSUSTAINABLE_CASHFLOWを不使用"}
+  ]
+}
