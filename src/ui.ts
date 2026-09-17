@@ -30,11 +30,7 @@ const consumption = (values: Values, name: string, allowed?: readonly string[]) 
   throw new Error(`${name} の消費税ステータスが不正です`);
 };
 const monthly = (values: Values, prefix: string) => Array.from({ length: 12 }, (_, i) => numberValue(values, `${prefix}.${i + 1}`));
-const socialInsuranceMonths = (values: Values): number[] => {
-  const startMonth = numberValue(values, 'caseB.socialInsuranceStartMonth');
-  if (startMonth < 1 || startMonth > 12) throw new Error('caseB.socialInsuranceStartMonth は1〜12で入力してください');
-  return Array.from({ length: 13 - startMonth }, (_, i) => startMonth + i);
-};
+const socialInsuranceMonths = (): number[] => Array.from({ length: 12 }, (_, i) => i + 1);
 const personA = (values: Values, person: PersonKey) => ({
   sales: numberValue(values, `${person}.sales`), expenses: numberValue(values, `${person}.expenses`),
   blueReturnDeduction: numberValue(values, `${person}.blueReturnDeduction`) as 0 | 550000 | 650000,
@@ -66,7 +62,7 @@ export function parseFormValues(values: Values): ComparisonInput2026 {
   return {
     assessmentYear: 2026, householdNhiPayer: required(values, 'householdNhiPayer') as 'HUSBAND' | 'WIFE',
     caseA: { husband: personA(values, 'husbandA'), wife: personA(values, 'wifeA') },
-    caseB: { husband: personB(values, 'husbandB'), wife: personB(values, 'wifeB'), socialInsuranceMonths: socialInsuranceMonths(values) },
+    caseB: { husband: personB(values, 'husbandB'), wife: personB(values, 'wifeB'), socialInsuranceMonths: socialInsuranceMonths() },
     corporation: {
       capital: numberValue(values, 'corporation.capital'), establishmentDate: required(values, 'corporation.establishmentDate'),
       fiscalYearStart: required(values, 'corporation.fiscalYearStart'), fiscalYearEnd: required(values, 'corporation.fiscalYearEnd'),
@@ -116,8 +112,6 @@ const consumptionLabels = { EXEMPT: '免税', GENERAL: '一般課税', SIMPLIFIE
 const options = (items: readonly [string, string][]) => items.map(([value, label]) => `<option value="${value}">${label}</option>`).join('');
 const field = (label: string, name: string, type = 'number', requiredField = true, unit = '') => `<label>${label}${unit ? `<span class="unit">${unit}</span>` : ''}<input name="${name}" type="${type}"${requiredField ? ' required' : ''}></label>`;
 const select = (label: string, name: string, items: readonly [string, string][]) => `<label>${label}<select name="${name}" required><option value="">選択してください</option>${options(items)}</select></label>`;
-const monthOptions: [string, string][] = Array.from({ length: 12 }, (_, i) => [String(i + 1), `${i + 1}月`]);
-
 const consumptionFields = (label: string, name: string, corporate = false) => {
   const statuses: [string, string][] = corporate
     ? [['EXEMPT', consumptionLabels.EXEMPT], ['GENERAL', consumptionLabels.GENERAL], ['SIMPLIFIED', consumptionLabels.SIMPLIFIED]]
@@ -166,7 +160,7 @@ function taxTotal(result: ReturnType<typeof calculateComparison>) {
   const c = result.corporation;
   return c.corporationTax.tax + c.corporateLocalTax.total + c.corporateEnterpriseTax.baseCorporateEnterpriseTax + c.corporateEnterpriseTax.specialCorporateEnterpriseTax + c.consumptionTax.payable - c.consumptionTax.refund;
 }
-function renderComparison(result: ReturnType<typeof calculateComparison>) {
+export function renderComparison(result: ReturnType<typeof calculateComparison>) {
   const difference = result.comparison.wealthDifference;
   return `<h2>計算結果</h2><div class="result-grid">
     <article class="result-card"><h3>CASE-A 個人事業</h3>${metric('世帯可処分所得', result.comparison.householdDisposableIncomeA)}</article>
@@ -176,7 +170,7 @@ function renderComparison(result: ReturnType<typeof calculateComparison>) {
   </div>`;
 }
 const optimizationCandidate = (candidate: OptimizationResult['best'], index: number) => `<li><span class="rank">${index + 1}</span>夫 ${yen(candidate.husbandMonthlySalary)} / 妻 ${yen(candidate.wifeMonthlySalary)}<br><small>世帯可処分所得 ${yen(candidate.householdDisposableIncomeB)}・法人税引後留保 ${yen(candidate.corporateAfterTaxProfit)}・純資産増加 ${yen(candidate.totalWealthIncreaseB)}・CASE-Aとの差 ${yen(candidate.wealthDifference)}・${statusLabel(candidate.status)}${candidate.reason ? `：${reasonLabel(candidate.reason)}` : ''}</small></li>`;
-function renderOptimization(optimization: OptimizationResult) {
+export function renderOptimization(optimization: OptimizationResult) {
   const best = optimization.best;
   return `<h2>Optimizer結果</h2><div class="result-grid"><article class="result-card"><h3>推奨役員報酬</h3>${metric('推奨 夫 月額役員報酬', best.husbandMonthlySalary)}${metric('推奨 妻 月額役員報酬', best.wifeMonthlySalary)}<p class="status ${best.status.toLowerCase()}">${best.status === 'VALID' ? 'VALID（問題なし）' : 'WARNING（注意）'}</p><small>${reasonLabel(best.reason) || '法人税引後留保が0円以上の候補です。'}</small></article><article class="result-card"><h3>推奨ケースの指標</h3>${metric('CASE-B 世帯可処分所得', best.householdDisposableIncomeB)}${metric('法人税引後留保', best.corporateAfterTaxProfit)}${metric('世帯＋法人純資産増加', best.totalWealthIncreaseB)}${metric('CASE-Aとの差', best.wealthDifference, best.wealthDifference >= 0 ? 'advantage' : 'disadvantage')}</article></div><h3>Top 5（評価 ${optimization.evaluatedCount}件）</h3><ol class="top-five">${optimization.topCandidates.map(optimizationCandidate).join('')}</ol>`;
 }
@@ -187,7 +181,7 @@ function render() {
   <form id="form">
     <section class="form-section"><h2>基本設定</h2><div class="grid">${select('国民健康保険料の支払者', 'householdNhiPayer', [['HUSBAND', '夫'], ['WIFE', '妻']])}</div></section>
     <section class="form-section"><h2>CASE-A 個人事業</h2>${personFields('husbandA', '夫')}${personFields('wifeA', '妻')}</section>
-    <section class="form-section"><h2>CASE-B 法人化</h2><div class="grid">${select('社会保険加入開始月（夫婦共通）', 'caseB.socialInsuranceStartMonth', monthOptions)}</div>${personFields('husbandB', '夫の役員報酬')}${personFields('wifeB', '妻の役員報酬')}</section>
+    <section class="form-section"><h2>CASE-B 法人化</h2><p>社会保険は1月加入固定です。</p>${personFields('husbandB', '夫の役員報酬')}${personFields('wifeB', '妻の役員報酬')}</section>
     <section class="form-section"><h2>法人</h2><fieldset><legend>法人入力</legend><div class="grid">${field('法人資本金', 'corporation.capital', 'number', true, '円')}${field('設立日', 'corporation.establishmentDate', 'date')}${field('事業年度開始日', 'corporation.fiscalYearStart', 'date')}${field('事業年度終了日', 'corporation.fiscalYearEnd', 'date')}${field('売上', 'corporation.sales', 'number', true, '円')}${field('営業経費', 'corporation.operatingExpenses', 'number', true, '円')}${field('追加法人経費', 'corporation.additionalExpenses', 'number', true, '円')}${field('税理士費用', 'corporation.accountantCost', 'number', true, '円')}${field('維持費', 'corporation.maintenanceCost', 'number', true, '円')}${field('その他固定費', 'corporation.otherFixedCost', 'number', true, '円')}${field('事業月数', 'corporation.businessMonths', 'number', true, '月')}${field('法人所在月数', 'corporation.presenceMonths', 'number', true, '月')}${select('インボイス登録', 'corporation.invoiceRegistered', [['true', '登録する'], ['false', '登録しない']])}${select('課税事業者選択', 'corporation.taxableBusinessElection', [['true', '選択する'], ['false', '選択しない']])}${select('特定新設法人', 'corporation.specificNewCorporationFlag', [['true', '該当する'], ['false', '該当しない']])}</div></fieldset></section>
     <section class="form-section"><h2>消費税</h2>${consumptionFields('法人消費税区分', 'corporation.consumptionTax', true)}<small>選択した区分に関係しない入力欄は無効になります。</small></section>
     <section class="form-section actions"><h2>計算・最適化</h2><button type="submit">通常計算</button><button type="button" id="optimize-button">役員報酬を最適化</button><button type="button" class="secondary" id="save-button">入力を保存</button><button type="button" class="secondary" id="restore-button">保存から復元</button><button type="button" class="danger" id="reset-button">入力を初期化</button><p id="save-status" class="save-status" aria-live="polite"></p></section>
