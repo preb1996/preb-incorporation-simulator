@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fixture from './golden-01-fixture.json' with { type: 'json' };
-import { calculateFromForm, optimizeFromForm, parseFormValues } from '../src/ui.ts';
+import { applyMonthlySalary, calculateFromForm, clearSavedFormValues, loadFormValues, optimizeFromForm, parseFormValues, saveFormValues } from '../src/ui.ts';
 
 function flatten(value, prefix, output = {}) {
   if (Array.isArray(value)) value.forEach((item, index) => flatten(item, `${prefix}.${index + 1}`, output));
@@ -86,4 +86,29 @@ test('UI adapter exposes executive salary optimization summary', () => {
   assert.ok(outcome.result.evaluatedCount > 2601);
   assert.ok(outcome.result.best.status === 'VALID' || outcome.result.validCount === 0);
   assert.equal(Object.hasOwn(outcome.result.best, 'result'), false);
+});
+
+test('12か月反映は全月を揃え、個別修正を保持できる', () => {
+  const applied = applyMonthlySalary({ 'husbandB.salary.1': '100000' }, 'husbandB', '300000');
+  assert.deepEqual(Array.from({ length: 12 }, (_, i) => applied[`husbandB.salary.${i + 1}`]), Array(12).fill('300000'));
+  applied['husbandB.salary.4'] = '325000';
+  assert.equal(applied['husbandB.salary.4'], '325000');
+});
+
+test('localStorage adapter saves, restores, initializes, and tolerates failures', () => {
+  const data = new Map();
+  const storage = {
+    setItem: (key, value) => data.set(key, value),
+    getItem: key => data.get(key) ?? null,
+    removeItem: key => data.delete(key)
+  };
+  const values = { 'husbandB.salary.1': '300000' };
+  assert.equal(saveFormValues(values, storage), true);
+  assert.deepEqual(loadFormValues(storage), values);
+  assert.equal(clearSavedFormValues(storage), true);
+  assert.equal(loadFormValues(storage), null);
+  const failing = { setItem: () => { throw new Error('storage unavailable'); }, getItem: () => { throw new Error('storage unavailable'); }, removeItem: () => { throw new Error('storage unavailable'); } };
+  assert.equal(saveFormValues(values, failing), false);
+  assert.equal(loadFormValues(failing), null);
+  assert.equal(clearSavedFormValues(failing), false);
 });
